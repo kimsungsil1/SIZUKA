@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>시즈까의원 | 아트메이크업·피부클리닉</title>
+  <meta name="description" content="명동역 인근 시즈까의원. 아트메이크업(눈썹·아이·립), 피부레이저, 보톡스/필러. 자연스러운 결과로 유명한 하이엔드 클리닉." />
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta property="og:title" content="시즈까의원 | 아트메이크업·피부클리닉" />
+  <meta property="og:description" content="명동역 1번출구 인근. 자연스러운 결과로 유명한 하이엔드 클리닉." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <style>
+    :root{--bg:#0b1220;--card:#0f172a;--ink:#0b1220}
+    html{scroll-behavior:smooth}
+    body{font-family:"Pretendard","Noto Sans KR",system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,"Malgun Gothic",sans-serif}
+    /* elegant blur for header */
+    .glass{backdrop-filter:saturate(180%) blur(12px);background:rgba(255,255,255,.6)}
+    .hero-gradient{background:radial-gradient(1200px 600px at 10% -10%,#e2e8f0 0,#fff 30%,#fff 100%)}
+    .brand-gradient{background:linear-gradient(135deg,#0ea5e9 0%,#2563eb 30%,#7c3aed 70%,#111827 100%)}
+    .shadow-soft{box-shadow:0 10px 30px rgba(2,6,23,.12)}
+    .focus-ring:focus{outline:2px solid #111827; outline-offset:2px}
+    .divider{height:1px; background:linear-gradient(90deg,transparent,#e5e7eb,transparent)}
+    .badge{border:1px solid rgba(15,23,42,.08);}
+  </style>
+  <script>
+    // tiny JS for mobile nav
+    document.addEventListener('DOMContentLoaded', ()=>{
+      const btn = document.querySelector('#navToggle');
+      const menu = document.querySelector('#mobileMenu');
+      btn?.addEventListener('click', ()=>menu?.classList.toggle('hidden'));
+    })
+  </script>
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalClinic",
+    "name": "시즈까의원",
+    "medicalSpecialty": ["Dermatology", "CosmeticSurgery"],
+    "description": "아트메이크업과 피부 시술로 자연스러운 결과를 제공하는 클리닉",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "남산동3가 13-36, 계림빌딩 6층",
+      "addressLocality": "중구",
+      "addressRegion": "서울특별시",
+      "postalCode": "04537",
+      "addressCountry": "KR"
+    },
+    "telephone": "+82-2-776-3677",
+    "email": "sizuka7763677@gmail.com",
+    "areaServed": "Seoul",
+    "url": "https://example.com"
+  }
+  </script>
+</head>
+<body class="text-slate-900 antialiased">
+  <a href="#main" class="sr-only focus:not-sr-only focus-ring absolute left-4 top-3 z-50 rounded bg-white px-3 py-2 text-sm">본문으로 건너뛰기</a>
+
+  <!-- Header -->
+  <header class="fixed inset-x-0 top-0 z-40 glass">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="h-8 w-8 rounded-lg brand-gradient"></div>
+          <span class="text-lg font-semibold tracking-tight">시즈까의원</span>
+          <span class="ml-2 hidden rounded-full bg-slate-900/90 px-2.5 py-1 text-xs font-medium text-white sm:inline">Myeong-dong</span>
+        </div>
+        <nav class="hidden gap-8 text-sm sm:flex">
+          <a href="#services" class="hover:text-slate-700">진료과목</a>
+          <a href="#before-after" class="hover:text-slate-700">Before·After</a>
+          <a href="#doctor" class="hover:text-slate-700">의료진</a>
+          <a href="#location" class="hover:text-slate-700">오시는 길</a>
+        </nav>
+        <div class="hidden items-center gap-2 sm:flex">
+          <a href="tel:+8227763677" class="rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-soft hover:bg-slate-800 focus-ring">전화 예약</a>
+          <a href="#contact" class="rounded-xl border border-slate-900/10 px-4 py-2 text-sm font-semibold hover:bg-slate-50 focus-ring">카톡 상담</a>
+        </div>
+        <button id="navToggle" aria-label="모바일 메뉴" class="sm:hidden rounded-md p-2 hover:bg-white focus-ring">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden border-t border-slate-900/10 bg-white sm:hidden">
+      <div class="mx-auto max-w-7xl px-4 py-3 text-sm">
+        <a href="#services" class="block py-2">진료과목</a>
+        <a href="#before-after" class="block py-2">Before·After</a>
+        <a href="#doctor" class="block py-2">의료진</a>
+        <a href="#location" class="block py-2">오시는 길</a>
+        <div class="mt-2 flex gap-2">
+          <a href="tel:+8227763677" class="flex-1 rounded-lg bg-slate-900 px-4 py-2 text-center font-semibold text-white">전화 예약</a>
+          <a href="#contact" class="flex-1 rounded-lg border border-slate-900/10 px-4 py-2 text-center font-semibold">카톡 상담</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero-gradient pt-28">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid items-center gap-10 py-12 md:grid-cols-2 md:py-20">
+        <div>
+          <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs text-slate-700 badge">
+            <span class="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+            자연스러운 결과로 유명한 클리닉
+          </span>
+          <h1 class="mt-4 text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">하이엔드 <span class="underline decoration-slate-300">아트메이크업</span>과
+            피부시술, <br class="hidden sm:block"/>시즈까의원</h1>
+          <p class="mt-4 max-w-xl text-slate-600">명동역 도보 1분. 눈썹·아이·립 아트메이크업부터 레이저, 보톡스/필러까지. 과한 연출 없이 깔끔하고 오래가는 결과를 약속합니다.</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="tel:+8227763677" class="rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-soft hover:bg-slate-800">지금 전화예약</a>
+            <a href="#services" class="rounded-xl border border-slate-900/10 px-5 py-3 text-sm font-semibold hover:bg-slate-50">시술 보기</a>
+          </div>
+          <div class="mt-6 text-xs text-slate-500">KR / JP / EN 상담 지원</div>
+        </div>
+        <div class="relative">
+          <div class="aspect-[4/3] w-full overflow-hidden rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 shadow-soft">
+            <!-- Placeholder visual -->
+            <div class="flex h-full w-full items-center justify-center">
+              <div class="text-center">
+                <div class="mx-auto mb-3 h-12 w-12 rounded-full bg-slate-300"></div>
+                <p class="text-slate-500">Clinic Preview Placeholder</p>
+                <p class="text-xs text-slate-400">시술 공간 / 리셉션 이미지는 추후 교체</p>
+              </div>
+            </div>
+          </div>
+          <div class="pointer-events-none absolute -bottom-6 -right-6 hidden rounded-2xl bg-white/80 p-4 shadow-soft backdrop-blur md:block">
+            <p class="text-xs font-medium text-slate-500">명동역 1번출구 60m</p>
+            <p class="text-xs text-slate-400">서울 중구 남산동3가 계림빌딩 6층</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust bar -->
+  <div class="divider"></div>
+  <section class="bg-white">
+    <div class="mx-auto grid max-w-7xl grid-cols-1 gap-3 px-4 py-6 text-xs text-slate-500 sm:grid-cols-3 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2"><span class="inline-block h-2 w-2 rounded-full bg-emerald-500"></span> 일본 고객 다수 방문</div>
+      <div class="flex items-center gap-2"><span class="inline-block h-2 w-2 rounded-full bg-blue-500"></span> 아트메이크업 1년 보증 (조건부)</div>
+      <div class="flex items-center gap-2"><span class="inline-block h-2 w-2 rounded-full bg-indigo-500"></span> 명동 중심, 접근성 우수</div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="bg-white py-16 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-8 flex items-end justify-between gap-4">
+        <h2 class="text-2xl font-semibold sm:text-3xl">진료과목 & 대표시술</h2>
+        <a href="#contact" class="text-sm font-medium text-slate-600 hover:text-slate-900">상담 예약하기 →</a>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <!-- Card 1 -->
+        <article class="group rounded-2xl border border-slate-200 bg-white p-6 shadow-soft transition hover:-translate-y-1">
+          <h3 class="text-lg font-semibold">아트메이크업 · 눈썹</h3>
+          <p class="mt-2 text-sm text-slate-600">3D/4D 콤보, 온브레 기법으로 자연스럽고 또렷한 인상 완성.</p>
+          <ul class="mt-3 list-disc pl-5 text-sm text-slate-600">
+            <li>콤보 브로우(4D+온브레)</li>
+            <li>리터치(조건부 무료)</li>
+          </ul>
+        </article>
+        <!-- Card 2 -->
+        <article class="group rounded-2xl border border-slate-200 bg-white p-6 shadow-soft transition hover:-translate-y-1">
+          <h3 class="text-lg font-semibold">아트메이크업 · 아이라인</h3>
+          <p class="mt-2 text-sm text-slate-600">속눈썹 사이 점막을 자연스럽게 메워 선명한 눈매 연출.</p>
+          <ul class="mt-3 list-disc pl-5 text-sm text-slate-600">
+            <li>상·하 아이라인</li>
+            <li>섬세한 디자인 컨설팅</li>
+          </ul>
+        </article>
+        <!-- Card 3 -->
+        <article class="group rounded-2xl border border-slate-200 bg-white p-6 shadow-soft transition hover:-translate-y-1">
+          <h3 class="text-lg font-semibold">아트메이크업 · 풀립</h3>
+          <p class="mt-2 text-sm text-slate-600">그라데이션으로 생기있는 컬러, 수분감 있는 입술 표현.</p>
+          <ul class="mt-3 list-disc pl-5 text-sm text-slate-600">
+            <li>풀립 그라데이션</li>
+            <li>색상 컨설팅</li>
+          </ul>
+        </article>
+        <!-- Card 4 -->
+        <article class="group rounded-2xl border border-slate-200 bg-white p-6 shadow-soft transition hover:-translate-y-1">
+          <h3 class="text-lg font-semibold">피부레이저·보톡스/필러</h3>
+          <p class="mt-2 text-sm text-slate-600">미백/리주브네이션, 윤곽 개선 등 개인별 맞춤 시술.</p>
+          <ul class="mt-3 list-disc pl-5 text-sm text-slate-600">
+            <li>색소·미백 레이저</li>
+            <li>보톡스/필러</li>
+          </ul>
+        </article>
+      </div>
+      <p class="mt-4 text-xs text-slate-500">* 모든 시술은 개인 피부상태에 따라 효과와 다운타임에 차이가 있을 수 있습니다.</p>
+    </div>
+  </section>
+
+  <!-- Before & After -->
+  <section id="before-after" class="bg-slate-50 py-16 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-semibold sm:text-3xl">Before · After</h2>
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Placeholder tiles (replace with real photos) -->
+        <div class="overflow-hidden rounded-2xl bg-white p-3 shadow-soft">
+          <div class="aspect-[4/3] w-full rounded-xl bg-gradient-to-br from-slate-100 to-slate-200"></div>
+          <div class="mt-3 flex justify-between text-sm text-slate-600"><span>콤보 브로우</span><span>자연 그라데이션</span></div>
+        </div>
+        <div class="overflow-hidden rounded-2xl bg-white p-3 shadow-soft">
+          <div class="aspect-[4/3] w-full rounded-xl bg-gradient-to-br from-slate-100 to-slate-200"></div>
+          <div class="mt-3 flex justify-between text-sm text-slate-600"><span>아이라인</span><span>은은한 또렷함</span></div>
+        </div>
+        <div class="overflow-hidden rounded-2xl bg-white p-3 shadow-soft">
+          <div class="aspect-[4/3] w-full rounded-xl bg-gradient-to-br from-slate-100 to-slate-200"></div>
+          <div class="mt-3 flex justify-between text-sm text-slate-600"><span>풀립</span><span>생기 표현</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Doctor -->
+  <section id="doctor" class="bg-white py-16 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid items-center gap-10 md:grid-cols-2">
+        <div class="order-2 md:order-1">
+          <h2 class="text-2xl font-semibold sm:text-3xl">원장 소개</h2>
+          <p class="mt-3 text-slate-600">세심한 디자인과 자연스러운 결과를 우선하는 시술 철학으로, 과한 표현 없이 본연의 인상을 살려드립니다.</p>
+          <ul class="mt-5 space-y-2 text-slate-700">
+            <li>· 중앙대학교 의과대학 졸업</li>
+            <li>· 충청남도 공중보건의 근무</li>
+            <li>· 보건복지부 장관상 수상</li>
+            <li>· 서울성모병원 수료</li>
+            <li>· 국립경찰병원 가정의학과 수료</li>
+          </ul>
+        </div>
+        <div class="order-1 md:order-2">
+          <div class="aspect-[4/3] w-full overflow-hidden rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 shadow-soft"></div>
+          <p class="mt-2 text-xs text-slate-500">* 프로필 사진 추후 교체</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section id="location" class="bg-slate-50 py-16 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-semibold sm:text-3xl">오시는 길</h2>
+      <p class="mt-2 text-slate-600">서울특별시 중구 남산동3가 13-36, 계림빌딩 6층 (명동역 1번 출구 도보 1분)</p>
+      <div class="mt-6 grid gap-6 md:grid-cols-2">
+        <div class="overflow-hidden rounded-2xl shadow-soft">
+          <iframe title="시즈까의원 지도" class="h-80 w-full border-0" loading="lazy" allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=%EC%84%9C%EC%9A%B8%20%EC%A4%91%EA%B5%AC%20%EB%82%A8%EC%82%B0%EB%8F%993%EA%B0%80%2013-36%20%EA%B3%84%EB%A6%BC%EB%B9%8C%EB%94%A9&output=embed"></iframe>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-6">
+          <dl class="grid grid-cols-3 gap-y-3 text-sm">
+            <dt class="col-span-1 text-slate-500">전화</dt>
+            <dd class="col-span-2 font-medium"><a class="hover:underline" href="tel:+8227763677">02-776-3677</a></dd>
+            <dt class="col-span-1 text-slate-500">이메일</dt>
+            <dd class="col-span-2 font-medium"><a class="hover:underline" href="mailto:sizuka7763677@gmail.com">sizuka7763677@gmail.com</a></dd>
+            <dt class="col-span-1 text-slate-500">주소</dt>
+            <dd class="col-span-2">서울 중구 남산동3가 13-36, 계림빌딩 6층</dd>
+            <dt class="col-span-1 text-slate-500">영업시간</dt>
+            <dd class="col-span-2">예약제 (전화 문의)</dd>
+            <dt class="col-span-1 text-slate-500">언어</dt>
+            <dd class="col-span-2">한국어 / 일본어 / 영어(간단)</dd>
+          </dl>
+          <div class="mt-4 text-xs text-slate-500">* 주차는 인근 유료주차장 이용</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="bg-white py-16 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid items-center gap-10 md:grid-cols-2">
+        <div>
+          <h2 class="text-2xl font-semibold sm:text-3xl">상담·예약</h2>
+          <p class="mt-3 text-slate-600">간단한 문의는 카카오톡으로, 자세한 상담은 전화로 도와드립니다.</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="tel:+8227763677" class="rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-soft hover:bg-slate-800">전화 02-776-3677</a>
+            <a href="#" class="rounded-xl border border-slate-900/10 px-5 py-3 text-sm font-semibold hover:bg-slate-50">카톡 채널 열기</a>
+            <a href="mailto:sizuka7763677@gmail.com" class="rounded-xl border border-slate-900/10 px-5 py-3 text-sm font-semibold hover:bg-slate-50">이메일 문의</a>
+          </div>
+          <p class="mt-3 text-xs text-slate-500">※ 시술 전·후 주의사항은 내원 시 별도 안내</p>
+        </div>
+        <form class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="sm:col-span-1">
+              <label class="mb-1 block text-sm text-slate-600" for="name">이름</label>
+              <input id="name" name="name" type="text" autocomplete="name" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-slate-900 focus:outline-none" placeholder="예) 김성실" />
+            </div>
+            <div class="sm:col-span-1">
+              <label class="mb-1 block text-sm text-slate-600" for="phone">연락처</label>
+              <input id="phone" name="phone" type="tel" inputmode="tel" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-slate-900 focus:outline-none" placeholder="예) 010-1234-5678" />
+            </div>
+            <div class="sm:col-span-2">
+              <label class="mb-1 block text-sm text-slate-600" for="service">관심 시술</label>
+              <select id="service" name="service" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-slate-900 focus:outline-none">
+                <option>아트메이크업 · 눈썹</option>
+                <option>아트메이크업 · 아이라인</option>
+                <option>아트메이크업 · 풀립</option>
+                <option>피부레이저</option>
+                <option>보톡스/필러</option>
+                <option>기타 문의</option>
+              </select>
+            </div>
+            <div class="sm:col-span-2">
+              <label class="mb-1 block text-sm text-slate-600" for="message">메시지</label>
+              <textarea id="message" name="message" rows="4" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-slate-900 focus:outline-none" placeholder="원하시는 날짜/시간, 시술 내용을 남겨주세요."></textarea>
+            </div>
+          </div>
+          <button type="button" class="mt-4 w-full rounded-lg bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-soft">보내기</button>
+          <p class="mt-2 text-xs text-slate-500">* 본 폼은 예시이며, 전송 스크립트 연결 시 실제 접수 가능</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-slate-200 bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+      <div class="grid gap-6 sm:grid-cols-3">
+        <div>
+          <div class="flex items-center gap-2">
+            <div class="h-8 w-8 rounded-lg brand-gradient"></div>
+            <span class="text-base font-semibold">시즈까의원</span>
+          </div>
+          <p class="mt-3 text-sm text-slate-600">자연스러움을 지향하는 명동의 하이엔드 클리닉.</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold">연락처</h3>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li>전화: <a class="hover:underline" href="tel:+8227763677">02-776-3677</a></li>
+            <li>이메일: <a class="hover:underline" href="mailto:sizuka7763677@gmail.com">sizuka7763677@gmail.com</a></li>
+            <li>주소: 서울 중구 남산동3가 13-36, 계림빌딩 6층</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold">안내</h3>
+          <ul class="mt-3 space-y-2 text-sm text-slate-600">
+            <li><a href="#services" class="hover:underline">진료과목</a></li>
+            <li><a href="#before-after" class="hover:underline">Before·After</a></li>
+            <li><a href="#location" class="hover:underline">오시는 길</a></li>
+            <li><a href="#" class="hover:underline">개인정보처리방침</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8 text-xs text-slate-400">© <span id="year"></span> 시즈까의원. All rights reserved.</div>
+    </div>
+    <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+  </footer>
+</body>
+</html>
