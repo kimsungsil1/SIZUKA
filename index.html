@@ -6,11 +6,13 @@
   <meta name="format-detection" content="telephone=no" />
   <meta name="theme-color" content="#0f172a" />
   <title>시즈까의원 | 명동 피부·레이저 / 남성·여성 클리닉</title>
-  <meta name="description" content="명동 시즈까의원. 퇴계로 134(계림빌딩 6F): 피부·레이저. 퇴계로 123(하이헤리엇 8F): 남성·여성 클리닉(필러 등). KR/JP/EN/ZH 상담." />
+  <meta name="description" content="명동 시즈까의원. 퇴계로 134(계림빌딩 6F): 피부·레이저. 퇴계로 123(하이헤리엇 8F 23·24호): 남성·여성 클리닉. 보톡스·필러·미백·프락셀·리프테라. 한국/일본/중국/영어 상담." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
     :root{--safe:env(safe-area-inset-bottom)}
     html{scroll-behavior:smooth}
@@ -20,17 +22,19 @@
     .brand-dot{background:linear-gradient(135deg,#0ea5e9,#6366f1,#7c3aed)}
     .ratio-4-3{aspect-ratio:4/3}
     .sticky-cta{padding-bottom:calc(0.5rem + max(0px,var(--safe)))}
+    .price{font-feature-settings:"tnum" 1;letter-spacing:-0.01em}
+    .divider{height:1px;background:linear-gradient(90deg,transparent,#e5e7eb,transparent)}
     @media (prefers-reduced-motion: reduce){
       *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;scroll-behavior:auto !important}
     }
     h1{font-size:clamp(1.75rem,4.5vw,3rem);line-height:1.15}
     h2{font-size:clamp(1.25rem,3vw,1.875rem)}
     a,button{touch-action:manipulation}
-    .price{font-feature-settings:"tnum" 1;letter-spacing:-0.01em}
-    .divider{height:1px;background:linear-gradient(90deg,transparent,#e5e7eb,transparent)}
   </style>
-  <script defer>
+
+  <script>
     document.addEventListener('DOMContentLoaded',()=>{
+      // mobile nav
       const btn=document.querySelector('#navToggle');
       const menu=document.querySelector('#mobileMenu');
       btn?.addEventListener('click',()=>{
@@ -41,25 +45,56 @@
       // Branch switcher (ARIA tabs)
       const tabs=[...document.querySelectorAll('[role="tab"]')];
       const panels=[...document.querySelectorAll('[role="tabpanel"]')];
+
       function show(k){
         tabs.forEach(t=>{
           const on=t.dataset.branch===k;
-          t.setAttribute('aria-selected',String(on));
-          t.classList.toggle('bg-slate-900',on);
-          t.classList.toggle('text-white',on);
-          t.classList.toggle('border-slate-900',on);
+          t.setAttribute('aria-selected', String(on));
+          t.classList.toggle('bg-slate-900', on);
+          t.classList.toggle('text-white', on);
+          t.classList.toggle('border-slate-900', on);
         });
-        panels.forEach(p=>p.hidden=(p.dataset.section!==k));
+        panels.forEach(p=>p.hidden = (p.dataset.section!==k));
         if(history.replaceState) history.replaceState(null,'','#branch-'+k);
       }
       tabs.forEach(t=>t.addEventListener('click',()=>show(t.dataset.branch)));
       if(location.hash==="#branch-123") show('123');
 
-      // graceful image fallback
+      // Image fallback (no broken images)
       document.querySelectorAll('img[data-fallback]').forEach(img=>{
-        img.addEventListener('error',()=>{img.src=img.dataset.fallback;});
+        img.addEventListener('error',()=>{ img.src = img.dataset.fallback; });
       });
+
+      // Set year text (safe for multiple elements)
+      document.querySelectorAll('.js-year').forEach(el=>el.textContent=new Date().getFullYear());
     });
+  </script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"MedicalClinic",
+        "name":"시즈까의원 명동 피부·레이저",
+        "medicalSpecialty":["Dermatology"],
+        "address":{"@type":"PostalAddress","streetAddress":"퇴계로 134, 계림빌딩 6층","addressLocality":"중구","addressRegion":"서울특별시","postalCode":"04629","addressCountry":"KR"},
+        "telephone":"+82-2-776-3677",
+        "openingHours":"Mo-Fr 10:30-18:00",
+        "availableLanguage":["ko","ja","en","zh"]
+      },
+      {
+        "@type":"MedicalClinic",
+        "name":"시즈까의원 명동 남성·여성 클리닉",
+        "medicalSpecialty":["Urology","Gynecology"],
+        "address":{"@type":"PostalAddress","streetAddress":"퇴계로 123, 하이헤리엇 8층 23·24호","addressLocality":"중구","addressRegion":"서울특별시","postalCode":"04537","addressCountry":"KR"},
+        "telephone":"+82-2-776-3677",
+        "openingHours":"Mo-Fr 10:30-18:00",
+        "availableLanguage":["ko","ja","en","zh"]
+      }
+    ]
+  }
   </script>
 </head>
 <body class="text-slate-900 antialiased">
@@ -111,17 +146,20 @@
             명동역 도보 1~3분 · 프라이빗 예약제
           </span>
           <h1 class="mt-3 sm:mt-4 font-semibold leading-tight tracking-tight">자연스러움을 설계하는 <span class="underline decoration-slate-300">시즈까의원</span></h1>
-          <p class="mt-3 sm:mt-4 max-w-xl text-slate-600">퇴계로 134(계림빌딩 6F): 피부·레이저｜퇴계로 123(하이헤리엇 8F): 남성·여성 클리닉. KR/JP/EN/ZH 상담.</p>
+          <p class="mt-3 sm:mt-4 max-w-xl text-slate-600">퇴계로 134(계림빌딩 6F): 피부·레이저｜퇴계로 123(하이헤리엇 8F 23·24호): 남성·여성 클리닉. KR/JP/EN/ZH 상담.</p>
           <div class="mt-5 sm:mt-6 flex flex-wrap gap-3">
             <a href="tel:+8227763677" class="rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-soft hover:bg-slate-800">전화 예약</a>
-            <a href="#locations" class="rounded-xl border border-slate-900/10 px-5 py-3 text-sm font-semibold hover:bg-slate-50">지점 보기</a>
+            <a href="#locations" class="rounded-xl border border-slate-900/10 px-5 py-3 text-sm font-semibold hover:bg-slate-50">오시는 길</a>
           </div>
         </div>
         <div class="relative">
-          <img id="hero-img" class="ratio-4-3 w-full overflow-hidden rounded-2xl bg-slate-100 object-cover shadow-soft"
+          <img id="hero-img"
+               class="ratio-4-3 w-full overflow-hidden rounded-2xl bg-slate-100 object-cover shadow-soft"
                src="/assets/hero-clinic.webp"
-               alt="밝고 미니멀한 프리미엄 클리닉 로비" fetchpriority="high"
-               width="1536" height="1152" sizes="(max-width: 768px) 100vw, 50vw" />
+               data-fallback="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1536 1152'%3E%3Crect fill='%23f1f5f9' width='1536' height='1152'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2394a3b8' font-size='42' font-family='sans-serif'%3EClinic Image%3C/text%3E%3C/svg%3E"
+               alt="밝고 미니멀한 프리미엄 클리닉 로비"
+               fetchpriority="high" width="1536" height="1152"
+               sizes="(max-width: 768px) 100vw, 50vw" />
           <div class="pointer-events-none absolute -bottom-6 -right-6 hidden rounded-2xl bg-white/80 p-4 shadow-soft backdrop-blur md:block">
             <p class="text-xs font-medium text-slate-500">명동역 도보 1~3분</p>
             <p class="text-xs text-slate-400">퇴계로 134 · 퇴계로 123</p>
@@ -131,23 +169,22 @@
     </div>
   </section>
 
-  <!-- Quick switch -->
+  <!-- Branch switch -->
   <section class="bg-white">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div role="tablist" aria-label="지점 전환" class="mt-2 mb-6 inline-flex rounded-xl border border-slate-200 p-1 text-sm">
-        <button role="tab" aria-selected="true" data-branch="134" class="rounded-lg px-4 py-2 font-medium border">퇴계로 134 · 피부·레이저</button>
-        <button role="tab" aria-selected="false" data-branch="123" class="rounded-lg px-4 py-2 font-medium">퇴계로 123 · 남성·여성</button>
+        <button id="tab-134" role="tab" aria-selected="true" aria-controls="panel-134" data-branch="134" class="rounded-lg px-4 py-2 font-medium border">퇴계로 134 · 피부·레이저</button>
+        <button id="tab-123" role="tab" aria-selected="false" aria-controls="panel-123" data-branch="123" class="rounded-lg px-4 py-2 font-medium">퇴계로 123 · 남성·여성</button>
       </div>
     </div>
   </section>
 
   <!-- Branch 134: 피부/레이저 & 가격 -->
-  <section id="services" role="tabpanel" aria-labelledby="tab-134" data-section="134" class="bg-white py-10 sm:py-16">
+  <section id="services" role="tabpanel" aria-labelledby="tab-134" data-section="134" class="bg-white py-10 sm:py-16" aria-live="polite">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <h2 class="font-semibold">퇴계로 134 | 피부·레이저</h2>
-      <p class="mt-2 text-slate-600">계림빌딩 6층. 보톡스/필러, 미백·프락셀 레이저, 리프테라 등.</p>
+      <p class="mt-2 text-slate-600">계림빌딩 6층. 보톡스·필러, 미백·프락셀 레이저, 리프테라(HIFU).</p>
 
-      <!-- price cards -->
       <div class="mt-6 grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         <!-- Botox -->
         <article class="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 shadow-soft">
@@ -159,7 +196,7 @@
             <li class="flex justify-between"><span>얼굴 전체</span><span class="price font-semibold">₩200,000</span></li>
             <li class="flex justify-between"><span>종아리(다리)</span><span class="price font-semibold">₩300,000</span></li>
           </ul>
-          <p class="mt-3 text-xs text-slate-500">* 시술 부위·용량에 따라 개인차가 있습니다.</p>
+          <p class="mt-3 text-xs text-slate-500">* 부위·용량에 따라 개인차가 있습니다.</p>
         </article>
 
         <!-- Filler -->
@@ -169,8 +206,8 @@
           <p class="mt-2 text-xs text-slate-500">예) 질 필러 10cc → <span class="price font-semibold">₩700,000</span></p>
           <img class="mt-4 ratio-4-3 w-full rounded-xl object-cover bg-slate-100"
                src="/assets/filler-generic.webp"
-               data-fallback="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 900'%3E%3Crect fill='%23f1f5f9' width='1200' height='900'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2394a3b8' font-size='42' font-family='sans-serif'%3E필러 이미지%3C/text%3E%3C/svg%3E"
-               alt="필러 시술 콘셉트" loading="lazy" width="1200" height="900" />
+               data-fallback="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 900'%3E%3Crect fill='%23f1f5f9' width='1200' height='900'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2394a3b8' font-size='42' font-family='sans-serif'%3EFiller%3C/text%3E%3C/svg%3E"
+               alt="필러 시술 콘셉트 이미지" loading="lazy" width="1200" height="900" />
         </article>
 
         <!-- Whitening Laser -->
@@ -179,7 +216,7 @@
           <p class="mt-3 text-sm">회당 <span class="price font-semibold">₩70,000</span></p>
           <img class="mt-4 ratio-4-3 w-full rounded-xl object-cover bg-slate-100"
                src="/assets/skin-laser-room.webp"
-               data-fallback="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 900'%3E%3Crect fill='%23f1f5f9' width='1200' height='900'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2394a3b8' font-size='42' font-family='sans-serif'%3E레이저룸%3C/text%3E%3C/svg%3E"
+               data-fallback="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 900'%3E%3Crect fill='%23f1f5f9' width='1200' height='900'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2394a3b8' font-size='42' font-family='sans-serif'%3EWhitening%3C/text%3E%3C/svg%3E"
                alt="미백 레이저 시술 공간" loading="lazy" width="1200" height="900" />
         </article>
 
@@ -189,8 +226,8 @@
           <p class="mt-3 text-sm">회당 <span class="price font-semibold">₩100,000</span></p>
           <img class="mt-4 ratio-4-3 w-full rounded-xl object-cover bg-slate-100"
                src="/assets/fraxel-room.webp"
-               data-fallback="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 900'%3E%3Crect fill='%23f1f5f9' width='1200' height='900'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2394a3b8' font-size='42' font-family='sans-serif'%3E프락셀%3C/text%3E%3C/svg%3E"
-               alt="프락셀 시술 콘셉트" loading="lazy" width="1200" height="900" />
+               data-fallback="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 900'%3E%3Crect fill='%23f1f5f9' width='1200' height='900'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2394a3b8' font-size='42' font-family='sans-serif'%3EFraxel%3C/text%3E%3C/svg%3E"
+               alt="프락셀 레이저 콘셉트" loading="lazy" width="1200" height="900" />
         </article>
 
         <!-- Liftera -->
@@ -200,7 +237,7 @@
           <img class="mt-4 ratio-4-3 w-full rounded-xl object-cover bg-slate-100"
                src="/assets/liftera-device.webp"
                data-fallback="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 900'%3E%3Crect fill='%23f1f5f9' width='1200' height='900'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2394a3b8' font-size='42' font-family='sans-serif'%3ELiftera%3C/text%3E%3C/svg%3E"
-               alt="리프테라 장비" loading="lazy" width="1200" height="900" />
+               alt="리프테라 장비 이미지" loading="lazy" width="1200" height="900" />
         </article>
       </div>
 
@@ -208,21 +245,23 @@
         <div class="rounded-2xl border border-slate-200 bg-white p-6">
           <h3 class="font-semibold">진료시간</h3>
           <p class="mt-2 text-sm text-slate-600">월~금 10:30–18:00 / 토·일 휴진 (예약제, 점심시간 없음)</p>
-          <p class="mt-1 text-xs text-slate-500">※ 일정 변동 가능. 방문 전 전화 확인 권장.</p>
+          <p class="mt-1 text-xs text-slate-500">※ 일정은 변동될 수 있습니다.</p>
           <dl class="mt-4 grid grid-cols-3 gap-y-2 text-sm">
             <dt class="text-slate-500">주소</dt><dd class="col-span-2">서울 중구 퇴계로 134, 계림빌딩 6층</dd>
-            <dt class="text-slate-500">전화</dt><dd class="col-span-2"><a class="hover:underline" href="tel:+8227763677">02-776-3677</a> <span class="text-xs text-slate-500">(대표)</span></dd>
+            <dt class="text-slate-500">전화</dt><dd class="col-span-2"><a class="hover:underline" href="tel:+8227763677">02-776-3677</a></dd>
           </dl>
         </div>
-        <div class="overflow-hidden rounded-2xl shadow-soft">
-          <iframe title="시즈까의원(퇴계로134) 지도" class="h-72 w-full border-0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=%EC%84%9C%EC%9A%B8%20%EC%A4%91%EA%B5%AC%20%ED%87%84%EA%B3%84%EB%A1%9C%20134%20%EA%B3%84%EB%A6%BC%EB%B9%8C%EB%94%A9%206%EC%B8%B5&output=embed"></iframe>
+        <div class="overflow-hidden rounded-2xl shadow-soft" id="map-134">
+          <iframe title="시즈까의원(퇴계로134) 지도" class="h-72 w-full border-0" loading="lazy" allowfullscreen
+                  referrerpolicy="no-referrer-when-downgrade"
+                  src="https://www.google.com/maps?q=%EC%84%9C%EC%9A%B8%20%EC%A4%91%EA%B5%AC%20%ED%87%84%EA%B3%84%EB%A1%9C%20134%20%EA%B3%84%EB%A6%BC%EB%B9%8C%EB%94%A9%206%EC%B8%B5&output=embed"></iframe>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Branch 123: 남성·여성 -->
-  <section role="tabpanel" aria-labelledby="tab-123" data-section="123" class="hidden bg-slate-50 py-10 sm:py-16">
+  <section id="panel-123" role="tabpanel" aria-labelledby="tab-123" data-section="123" class="hidden bg-slate-50 py-10 sm:py-16" aria-live="polite">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <h2 class="font-semibold">퇴계로 123 | 남성·여성 클리닉</h2>
       <p class="mt-2 text-slate-600">하이헤리엇 8층(23·24호). 남성 확대 필러/수술, 여성 질 필러·타이트닝 등 프라이빗 시술.</p>
@@ -250,11 +289,13 @@
           <p class="mt-1 text-xs text-slate-500">※ 시술 특성상 사전 상담·예약 필수.</p>
           <dl class="mt-4 grid grid-cols-3 gap-y-2 text-sm">
             <dt class="text-slate-500">주소</dt><dd class="col-span-2">서울 중구 퇴계로 123, 하이헤리엇 8층 23·24호</dd>
-            <dt class="text-slate-500">전화</dt><dd class="col-span-2"><a class="hover:underline" href="tel:+8227763677">02-776-3677</a> <span class="text-xs text-slate-500">(대표)</span></dd>
+            <dt class="text-slate-500">전화</dt><dd class="col-span-2"><a class="hover:underline" href="tel:+8227763677">02-776-3677</a></dd>
           </dl>
         </div>
-        <div class="overflow-hidden rounded-2xl shadow-soft">
-          <iframe title="시즈까의원(퇴계로123) 지도" class="h-72 w-full border-0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=%EC%84%9C%EC%9A%B8%20%EC%A4%91%EA%B5%AC%20%ED%87%84%EA%B3%84%EB%A1%9C%20123%20%ED%95%98%EC%9D%B4%ED%97%A4%EB%A6%AC%EC%97%AF%208%EC%B8%B5&output=embed"></iframe>
+        <div class="overflow-hidden rounded-2xl shadow-soft" id="map-123">
+          <iframe title="시즈까의원(퇴계로123) 지도" class="h-72 w-full border-0" loading="lazy" allowfullscreen
+                  referrerpolicy="no-referrer-when-downgrade"
+                  src="https://www.google.com/maps?q=%EC%84%9C%EC%9A%B8%20%EC%A4%91%EA%B5%AC%20%ED%87%84%EA%B3%84%EB%A1%9C%20123%20%ED%95%98%EC%9D%B4%ED%97%A4%EB%A6%AC%EC%97%AF%208%EC%B8%B5&output=embed"></iframe>
         </div>
       </div>
     </div>
@@ -274,18 +315,44 @@
           </ul>
         </div>
         <div>
-          <img class="aspect-[4/3] w-full overflow-hidden rounded-2xl bg-slate-100 object-cover shadow-soft"
+          <!-- 실제 프로필 수급 전 임시 스틸라이프 -->
+          <img class="ratio-4-3 w-full overflow-hidden rounded-2xl bg-slate-100 object-cover shadow-soft"
                src="/assets/doctor-stilllife.webp"
-               data-fallback="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 900'%3E%3Crect fill='%23eef2f7' width='1200' height='900'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2394a3b8' font-size='42' font-family='sans-serif'%3E프로필 이미지 준비중%3C/text%3E%3C/svg%3E"
-               alt="화이트코트, 청진기와 메모패드 스틸라이프" loading="lazy" width="1200" height="900" sizes="(max-width: 768px) 100vw, 50vw" />
+               data-fallback="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 900'%3E%3Crect fill='%23eef2f7' width='1200' height='900'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2394a3b8' font-size='42' font-family='sans-serif'%3EDoctor%20Image%20Pending%3C/text%3E%3C/svg%3E"
+               alt="화이트코트, 청진기와 메모패드 스틸라이프" loading="lazy" width="1200" height="900" />
           <p class="mt-2 text-xs text-slate-500">* 실제 프로필 사진 수급 시 교체</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Locations (anchor for nav) -->
+  <section id="locations" class="bg-slate-50 py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-semibold">지점 / 오시는 길</h2>
+      <div class="mt-6 grid gap-6 md:grid-cols-2">
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
+          <h3 class="font-semibold">퇴계로 134 · 피부·레이저</h3>
+          <p class="mt-2 text-sm text-slate-600">서울 중구 퇴계로 134, 계림빌딩 6층</p>
+          <div class="mt-3 flex gap-2">
+            <a href="#map-134" class="rounded-lg border border-slate-200 px-4 py-2 text-sm font-semibold">지도 보기</a>
+            <a href="tel:+8227763677" class="rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white">전화</a>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
+          <h3 class="font-semibold">퇴계로 123 · 남성·여성</h3>
+          <p class="mt-2 text-sm text-slate-600">서울 중구 퇴계로 123, 하이헤리엇 8층 23·24호</p>
+          <div class="mt-3 flex gap-2">
+            <a href="#map-123" class="rounded-lg border border-slate-200 px-4 py-2 text-sm font-semibold">지도 보기</a>
+            <a href="tel:+8227763677" class="rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white">전화</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Reserve / Contact -->
-  <section id="reserve" class="bg-slate-50 py-16 sm:py-24">
+  <section id="reserve" class="bg-white py-16 sm:py-24">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid items-start gap-10 md:grid-cols-2">
         <div>
@@ -297,31 +364,60 @@
           <p class="mt-3 text-xs text-slate-500">※ SNS 운영 없음. 공식 문의는 전화만 이용 가능.</p>
           <div class="mt-6 text-xs text-slate-500">언어: 한국어 / 일본어 / 영어 / 중국어</div>
         </div>
-        <form class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft">
+        <form class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft" onsubmit="return false">
           <div class="grid gap-4 sm:grid-cols-2">
-            <div class="sm:col-span-1"><label class="mb-1 block text-sm text-slate-600" for="name">이름</label><input id="name" name="name" type="text" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-slate-900 focus:outline-none" placeholder="예) 김성실" /></div>
-            <div class="sm:col-span-1"><label class="mb-1 block text-sm text-slate-600" for="phone">연락처</label><input id="phone" name="phone" type="tel" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-slate-900 focus:outline-none" placeholder="예) 010-1234-5678" /></div>
-            <div class="sm:col-span-2"><label class="mb-1 block text-sm text-slate-600" for="branch">방문 지점</label><select id="branch" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-slate-900 focus:outline-none"><option>퇴계로 134 · 피부·레이저</option><option>퇴계로 123 · 남성·여성</option></select></div>
-            <div class="sm:col-span-2"><label class="mb-1 block text-sm text-slate-600" for="message">메시지</label><textarea id="message" rows="4" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-slate-900 focus:outline-none" placeholder="원하시는 날짜/시간, 시술 내용을 남겨주세요."></textarea></div>
+            <div class="sm:col-span-1">
+              <label class="mb-1 block text-sm text-slate-600" for="name">이름</label>
+              <input id="name" name="name" type="text" autocomplete="name"
+                     class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-slate-900 focus:outline-none"
+                     placeholder="예) 김성실" />
+            </div>
+            <div class="sm:col-span-1">
+              <label class="mb-1 block text-sm text-slate-600" for="phone">연락처</label>
+              <input id="phone" name="phone" type="tel" inputmode="tel"
+                     class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-slate-900 focus:outline-none"
+                     placeholder="예) 010-1234-5678" />
+            </div>
+            <div class="sm:col-span-2">
+              <label class="mb-1 block text-sm text-slate-600" for="branch">방문 지점</label>
+              <select id="branch" name="branch"
+                      class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-slate-900 focus:outline-none">
+                <option>퇴계로 134 · 피부·레이저</option>
+                <option>퇴계로 123 · 남성·여성</option>
+              </select>
+            </div>
+            <div class="sm:col-span-2">
+              <label class="mb-1 block text-sm text-slate-600" for="message">메시지</label>
+              <textarea id="message" name="message" rows="4"
+                        class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:border-slate-900 focus:outline-none"
+                        placeholder="원하시는 날짜/시간, 시술 내용을 남겨주세요."></textarea>
+            </div>
           </div>
-          <button type="button" class="mt-4 w-full rounded-lg bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-soft">문의 보내기</button>
-          <p class="mt-2 text-xs text-slate-500">* 예시 폼: 실제 접수는 전화로 진행됩니다.</p>
+          <button type="button" class="mt-4 w-full rounded-lg bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-soft">
+            문의 보내기
+          </button>
+          <p class="mt-2 text-xs text-slate-500">* 예시 폼입니다. 실제 접수는 전화로 진행됩니다.</p>
         </form>
       </div>
     </div>
   </section>
 
-  <footer class="border-t border-slate-200 bg-white">
+  <!-- Footer (single, no duplicates) -->
+  <footer class="border-top border-slate-200 bg-white">
     <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <div class="grid gap-6 sm:grid-cols-3">
         <div>
-          <div class="flex items-center gap-2"><div class="h-8 w-8 rounded-lg brand-dot"></div><span class="text-base font-semibold">시즈까의원</span></div>
+          <div class="flex items-center gap-2">
+            <div class="h-8 w-8 rounded-lg brand-dot"></div>
+            <span class="text-base font-semibold">시즈까의원</span>
+          </div>
           <p class="mt-3 text-sm text-slate-600">자연스러운 결과, 프라이빗 진료.</p>
         </div>
         <div>
           <h3 class="text-sm font-semibold">연락처</h3>
           <ul class="mt-3 space-y-2 text-sm">
             <li>대표전화: <a class="hover:underline" href="tel:+8227763677">02-776-3677</a></li>
+            <li>이메일: <a class="hover:underline" href="mailto:sizuka7763677@gmail.com">sizuka7763677@gmail.com</a></li>
             <li>주소(피부·레이저): 서울 중구 퇴계로 134, 계림빌딩 6층</li>
             <li>주소(남성·여성): 서울 중구 퇴계로 123, 하이헤리엇 8층 23·24호</li>
           </ul>
@@ -336,9 +432,8 @@
           </ul>
         </div>
       </div>
-      <div class="mt-8 text-xs text-slate-400">© <span id="year"></span> 시즈까의원. All rights reserved.</div>
+      <div class="mt-8 text-xs text-slate-400">© <span class="js-year"></span> 시즈까의원. All rights reserved.</div>
     </div>
-    <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
   </footer>
 
   <!-- Sticky mobile CTA -->
@@ -350,32 +445,5 @@
       </div>
     </div>
   </div>
-</body>
-</html>
-          </div>
-          <p class="mt-3 text-sm text-slate-600">자연스러움을 지향하는 명동의 하이엔드 클리닉.</p>
-        </div>
-        <div>
-          <h3 class="text-sm font-semibold">연락처</h3>
-          <ul class="mt-3 space-y-2 text-sm">
-            <li>전화: <a class="hover:underline" href="tel:+8227763677">02-776-3677</a></li>
-            <li>이메일: <a class="hover:underline" href="mailto:sizuka7763677@gmail.com">sizuka7763677@gmail.com</a></li>
-            <li>주소: 서울 중구 남산동3가 13-36, 계림빌딩 6층</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="text-sm font-semibold">안내</h3>
-          <ul class="mt-3 space-y-2 text-sm text-slate-600">
-            <li><a href="#services" class="hover:underline">진료과목</a></li>
-            <li><a href="#before-after" class="hover:underline">Before·After</a></li>
-            <li><a href="#location" class="hover:underline">오시는 길</a></li>
-            <li><a href="#" class="hover:underline">개인정보처리방침</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="mt-8 text-xs text-slate-400">© <span id="year"></span> 시즈까의원. All rights reserved.</div>
-    </div>
-    <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
-  </footer>
 </body>
 </html>
