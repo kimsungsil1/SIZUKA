@@ -7,12 +7,11 @@
   <meta name="theme-color" content="#0f172a" />
   <title>시즈까의원 | 명동 피부·레이저 / 남성·여성 클리닉</title>
   <meta name="description" content="명동 시즈까의원. 퇴계로 134(계림빌딩 6F): 피부·레이저. 퇴계로 123(하이헤리엇 8F 23·24호): 남성·여성 클리닉. 보톡스·필러·미백·프락셀·리프테라. 한국/일본/중국/영어 상담." />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/images/hero-lobby.webp">
   <script src="https://cdn.tailwindcss.com"></script>
-
   <style>
     :root{--safe:env(safe-area-inset-bottom)}
     html{scroll-behavior:smooth}
@@ -23,7 +22,6 @@
     .ratio-4-3{aspect-ratio:4/3}
     .sticky-cta{padding-bottom:calc(0.5rem + max(0px,var(--safe)))}
     .price{font-feature-settings:"tnum" 1;letter-spacing:-0.01em}
-    .divider{height:1px;background:linear-gradient(90deg,transparent,#e5e7eb,transparent)}
     @media (prefers-reduced-motion: reduce){
       *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;scroll-behavior:auto !important}
     }
@@ -45,7 +43,6 @@
       // Branch switcher (ARIA tabs)
       const tabs=[...document.querySelectorAll('[role="tab"]')];
       const panels=[...document.querySelectorAll('[role="tabpanel"]')];
-
       function show(k){
         tabs.forEach(t=>{
           const on=t.dataset.branch===k;
@@ -60,12 +57,7 @@
       tabs.forEach(t=>t.addEventListener('click',()=>show(t.dataset.branch)));
       if(location.hash==="#branch-123") show('123');
 
-      // Image fallback (no broken images)
-      document.querySelectorAll('img[data-fallback]').forEach(img=>{
-        img.addEventListener('error',()=>{ img.src = img.dataset.fallback; });
-      });
-
-      // Set year text (safe for multiple elements)
+      // Set year text
       document.querySelectorAll('.js-year').forEach(el=>el.textContent=new Date().getFullYear());
     });
   </script>
@@ -155,10 +147,9 @@
         <div class="relative">
           <img id="hero-img"
                class="ratio-4-3 w-full overflow-hidden rounded-2xl bg-slate-100 object-cover shadow-soft"
-               src="/assets/hero-clinic.webp"
-               data-fallback="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1536 1152'%3E%3Crect fill='%23f1f5f9' width='1536' height='1152'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2394a3b8' font-size='42' font-family='sans-serif'%3EClinic Image%3C/text%3E%3C/svg%3E"
-               alt="밝고 미니멀한 프리미엄 클리닉 로비"
-               fetchpriority="high" width="1536" height="1152"
+               src="assets/images/hero-lobby.webp"
+               alt="시즈까의원 리셉션과 라운지 전경"
+               fetchpriority="high" width="1600" height="1200"
                sizes="(max-width: 768px) 100vw, 50vw" />
           <div class="pointer-events-none absolute -bottom-6 -right-6 hidden rounded-2xl bg-white/80 p-4 shadow-soft backdrop-blur md:block">
             <p class="text-xs font-medium text-slate-500">명동역 도보 1~3분</p>
@@ -173,7 +164,7 @@
   <section class="bg-white">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div role="tablist" aria-label="지점 전환" class="mt-2 mb-6 inline-flex rounded-xl border border-slate-200 p-1 text-sm">
-        <button id="tab-134" role="tab" aria-selected="true" aria-controls="panel-134" data-branch="134" class="rounded-lg px-4 py-2 font-medium border">퇴계로 134 · 피부·레이저</button>
+        <button id="tab-134" role="tab" aria-selected="true" aria-controls="services" data-branch="134" class="rounded-lg px-4 py-2 font-medium border">퇴계로 134 · 피부·레이저</button>
         <button id="tab-123" role="tab" aria-selected="false" aria-controls="panel-123" data-branch="123" class="rounded-lg px-4 py-2 font-medium">퇴계로 123 · 남성·여성</button>
       </div>
     </div>
@@ -204,10 +195,6 @@
           <h3 class="font-semibold">필러</h3>
           <p class="mt-3 text-sm">기준단가 <span class="price font-semibold">₩70,000</span> / cc</p>
           <p class="mt-2 text-xs text-slate-500">예) 질 필러 10cc → <span class="price font-semibold">₩700,000</span></p>
-          <img class="mt-4 ratio-4-3 w-full rounded-xl object-cover bg-slate-100"
-               src="/assets/filler-generic.webp"
-               data-fallback="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 900'%3E%3Crect fill='%23f1f5f9' width='1200' height='900'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2394a3b8' font-size='42' font-family='sans-serif'%3EFiller%3C/text%3E%3C/svg%3E"
-               alt="필러 시술 콘셉트 이미지" loading="lazy" width="1200" height="900" />
         </article>
 
         <!-- Whitening Laser -->
@@ -215,9 +202,8 @@
           <h3 class="font-semibold">미백 레이저</h3>
           <p class="mt-3 text-sm">회당 <span class="price font-semibold">₩70,000</span></p>
           <img class="mt-4 ratio-4-3 w-full rounded-xl object-cover bg-slate-100"
-               src="/assets/skin-laser-room.webp"
-               data-fallback="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 900'%3E%3Crect fill='%23f1f5f9' width='1200' height='900'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2394a3b8' font-size='42' font-family='sans-serif'%3EWhitening%3C/text%3E%3C/svg%3E"
-               alt="미백 레이저 시술 공간" loading="lazy" width="1200" height="900" />
+               src="assets/images/laser-room-1.webp"
+               alt="미백 레이저 시술실" loading="lazy" width="1200" height="900" />
         </article>
 
         <!-- Fraxel -->
@@ -225,19 +211,14 @@
           <h3 class="font-semibold">프락셀 레이저</h3>
           <p class="mt-3 text-sm">회당 <span class="price font-semibold">₩100,000</span></p>
           <img class="mt-4 ratio-4-3 w-full rounded-xl object-cover bg-slate-100"
-               src="/assets/fraxel-room.webp"
-               data-fallback="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 900'%3E%3Crect fill='%23f1f5f9' width='1200' height='900'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2394a3b8' font-size='42' font-family='sans-serif'%3EFraxel%3C/text%3E%3C/svg%3E"
-               alt="프락셀 레이저 콘셉트" loading="lazy" width="1200" height="900" />
+               src="assets/images/treatment-room-1.webp"
+               alt="프락셀 레이저 시술 베드룸" loading="lazy" width="1200" height="900" />
         </article>
 
         <!-- Liftera -->
         <article class="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 shadow-soft">
           <h3 class="font-semibold">리프테라(HIFU)</h3>
           <p class="mt-3 text-sm">300샷 <span class="price font-semibold">₩200,000</span></p>
-          <img class="mt-4 ratio-4-3 w-full rounded-xl object-cover bg-slate-100"
-               src="/assets/liftera-device.webp"
-               data-fallback="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 900'%3E%3Crect fill='%23f1f5f9' width='1200' height='900'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2394a3b8' font-size='42' font-family='sans-serif'%3ELiftera%3C/text%3E%3C/svg%3E"
-               alt="리프테라 장비 이미지" loading="lazy" width="1200" height="900" />
         </article>
       </div>
 
@@ -301,32 +282,38 @@
     </div>
   </section>
 
-  <!-- Doctor -->
-  <section id="doctor" class="bg-white py-16 sm:py-24">
+  <!-- Gallery -->
+  <section class="bg-white py-12 sm:py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="grid items-center gap-10 md:grid-cols-2">
-        <div>
-          <h2 class="text-2xl font-semibold sm:text-3xl">대표원장 | 손용인</h2>
-          <p class="mt-3 text-slate-600">과잉 없는 정직한 상담과 섬세한 디자인. 자연스러운 결과를 우선합니다.</p>
-          <ul class="mt-5 space-y-2 text-slate-700 text-sm">
-            <li>· 대한의사협회 회원 / 대한비뇨기의학회 회원 / 대한남성과학회 정회원</li>
-            <li>· 중앙대학교 의과대학 외래교수 역임</li>
-            <li>· (前) 아산군 보건소장</li>
-          </ul>
-        </div>
-        <div>
-          <!-- 실제 프로필 수급 전 임시 스틸라이프 -->
-          <img class="ratio-4-3 w-full overflow-hidden rounded-2xl bg-slate-100 object-cover shadow-soft"
-               src="/assets/doctor-stilllife.webp"
-               data-fallback="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 900'%3E%3Crect fill='%23eef2f7' width='1200' height='900'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2394a3b8' font-size='42' font-family='sans-serif'%3EDoctor%20Image%20Pending%3C/text%3E%3C/svg%3E"
-               alt="화이트코트, 청진기와 메모패드 스틸라이프" loading="lazy" width="1200" height="900" />
-          <p class="mt-2 text-xs text-slate-500">* 실제 프로필 사진 수급 시 교체</p>
-        </div>
+      <h2 class="text-2xl font-semibold">실내 갤러리</h2>
+      <p class="mt-1 text-sm text-slate-600">실제 클리닉 공간 사진입니다.</p>
+      <div class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
+        <figure class="overflow-hidden rounded-xl shadow-soft">
+          <img src="assets/images/lobby-2.webp" alt="로비와 리셉션" loading="lazy" class="w-full h-full object-cover">
+        </figure>
+        <figure class="overflow-hidden rounded-xl shadow-soft">
+          <img src="assets/images/lounge-1.webp" alt="라운지 소파 좌석" loading="lazy" class="w-full h-full object-cover">
+        </figure>
+        <figure class="overflow-hidden rounded-xl shadow-soft">
+          <img src="assets/images/treatment-room-1.webp" alt="트리트먼트룸(3베드)" loading="lazy" class="w-full h-full object-cover">
+        </figure>
+        <figure class="overflow-hidden rounded-xl shadow-soft">
+          <img src="assets/images/laser-room-1.webp" alt="레이저 장비실" loading="lazy" class="w-full h-full object-cover">
+        </figure>
+        <figure class="overflow-hidden rounded-xl shadow-soft">
+          <img src="assets/images/entrance-1.webp" alt="클리닉 출입구" loading="lazy" class="w-full h-full object-cover">
+        </figure>
+        <figure class="overflow-hidden rounded-xl shadow-soft">
+          <img src="assets/images/corridor-1.webp" alt="복도와 수납" loading="lazy" class="w-full h-full object-cover">
+        </figure>
+        <figure class="overflow-hidden rounded-xl shadow-soft">
+          <img src="assets/images/brick-room-1.webp" alt="벽돌 인테리어 공간" loading="lazy" class="w-full h-full object-cover">
+        </figure>
       </div>
     </div>
   </section>
 
-  <!-- Locations (anchor for nav) -->
+  <!-- Locations (anchor) -->
   <section id="locations" class="bg-slate-50 py-12 sm:py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <h2 class="text-2xl font-semibold">지점 / 오시는 길</h2>
@@ -346,6 +333,28 @@
             <a href="#map-123" class="rounded-lg border border-slate-200 px-4 py-2 text-sm font-semibold">지도 보기</a>
             <a href="tel:+8227763677" class="rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white">전화</a>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Doctor -->
+  <section id="doctor" class="bg-white py-16 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid items-center gap-10 md:grid-cols-2">
+        <div>
+          <h2 class="text-2xl font-semibold sm:text-3xl">대표원장 | 손용인</h2>
+          <p class="mt-3 text-slate-600">과잉 없는 정직한 상담과 섬세한 디자인. 자연스러운 결과를 우선합니다.</p>
+          <ul class="mt-5 space-y-2 text-slate-700 text-sm">
+            <li>· 대한의사협회 회원 / 대한비뇨기의학회 회원 / 대한남성과학회 정회원</li>
+            <li>· 중앙대학교 의과대학 외래교수 역임</li>
+            <li>· (前) 아산군 보건소장</li>
+          </ul>
+        </div>
+        <div>
+          <!-- 실제 프로필 수급 전 임시 스틸라이프(이미지 비움) -->
+          <div class="ratio-4-3 w-full overflow-hidden rounded-2xl bg-slate-100 shadow-soft"></div>
+          <p class="mt-2 text-xs text-slate-500">* 실제 프로필 사진 수급 시 교체</p>
         </div>
       </div>
     </div>
@@ -402,7 +411,7 @@
     </div>
   </section>
 
-  <!-- Footer (single, no duplicates) -->
+  <!-- Footer (single) -->
   <footer class="border-top border-slate-200 bg-white">
     <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <div class="grid gap-6 sm:grid-cols-3">
